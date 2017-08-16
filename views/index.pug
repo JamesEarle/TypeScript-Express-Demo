@@ -4,4 +4,7 @@ html
 head
     title This is my fun application
 body
-    h3 Hello World!
+    if msg
+        h3= msg
+    else
+        h3 Hello World

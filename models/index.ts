@@ -9,6 +9,7 @@ export class Student implements Person {
     public name: string;
     public activity: string;
 
+    // Constructor is run whenever 'new' is used in object instantiation
     constructor(pid: number, name: string, activity: string) {
         this.pid = pid;
         this.name = name;
