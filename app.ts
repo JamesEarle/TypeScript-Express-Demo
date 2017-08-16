@@ -17,6 +17,3 @@ app.get('/', function(req: any, res: any) {
 app.use(function(req: any, res: any, next: any) {});
 // Error handling middleware
 app.use(function(err: any, req: any, res: any, next: any) {});
-
-app.listen(app.get('port'));
-console.log("Listening on port " + app.get('port') + "...");
