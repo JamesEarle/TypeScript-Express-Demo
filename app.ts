@@ -1,9 +1,6 @@
 // app.ts
 
 import * as express from 'express';
-import * as http from 'http-server';
-
-import { Student } from './models';
 
 let app = express();
 
@@ -12,10 +9,7 @@ app.set('views', './views');
 app.set('view engine', 'pug');
 
 app.get('/', function(req: any, res: any) {
-    let me = new Student(1234, "James", "coding");
-    res.render('index', {
-        msg: me.greet()
-    });
+    res.render('index');
 });
 
 // Express 4.x
@@ -25,5 +19,4 @@ app.use(function(req: any, res: any, next: any) {});
 app.use(function(err: any, req: any, res: any, next: any) {});
 
 app.listen(app.get('port'));
-
-console.log("Listening...");
+console.log("Listening on port " + app.get('port') + "...");
