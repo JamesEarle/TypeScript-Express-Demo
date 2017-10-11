@@ -1,7 +1,33 @@
 doctype html
 html
-
-head
-    title This is my fun application
-body
-    h3 Hello World
+  head
+    title My Web App
+    link(rel='stylesheet', href='/css/style.css')
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    script(src="/js/bootstrap.min.js")
+  body
+    nav.navbar.navbar-dark.bg-dark.fixed-top
+      .container
+        a.navbar-brand(href="/") Intro to TypeScript
+    .container.top-margin
+      .row
+        .col-lg-12.text-center
+          h2 Colored Boxes!
+          if msg
+            p #{msg}
+          else 
+            p No message
+          .fixed-box
+            form(action="submit" method="POST")
+              .centered-form-group
+                .form-group
+                  label(for="color") Select a Color: 
+                  select(name="color" id="color")
+                    option(value="lightgray") Default
+                    option(value="red") Red
+                    option(value="green") Green
+                    option(value="blue") Blue
+                  button(type="submit").btn.btn-primary Submit
+    footer.footer
+      .container
+        span.text-muted &copy; James Earle 2017

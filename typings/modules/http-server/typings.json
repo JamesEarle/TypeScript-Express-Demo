@@ -1,9 +1,0 @@
-{
-  "resolution": "main",
-  "tree": {
-    "src": "https://raw.githubusercontent.com/types/npm-http-server/f422b6db777bb74b9784dd921bc0dca0d5c46a07/typings.json",
-    "raw": "registry:npm/http-server#0.8.5+20160723033700",
-    "main": "http-server.d.ts",
-    "name": "http-server"
-  }
-}

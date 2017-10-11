@@ -1,0 +1,43 @@
+doctype html
+html
+  head
+    title AzureML Stock Price Predictor
+    link(rel='stylesheet', href='/css/style.css')
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    script(src="/js/bootstrap.min.js")
+  body
+  nav.navbar.navbar-dark.bg-dark.fixed-top
+    .container
+      a.navbar-brand(href="/") Intro to TypeScript
+  .container
+    .row
+      .col-lg-12.text-center
+        h2 DELETE ALL THIS CONTENT.
+        p.lead.
+          This tool is not necessarily going to make you money. Simply put, it is a forecasting tool that will provide insights based 
+          off of the Azure Machine Learning model I trained. This model predicts the days closing price based on it's open, high, and low 
+          values. The stock data is acquired using the free <a href="https://www.alphavantage.co/">AlphaVantage API</a>. The model has been trained on a variety of 
+          stock information to provide a more general assessment of stock market behaviour rather than a particular stock.
+        .text-left
+          form(action="submit" method="POST")
+            .form-group
+              label(for="symbol") Stock Symbol
+              input(type="text" placeholder="e.g. MSFT" maxlength="6" name="symbol").form-control#symbol
+            .text-center
+              button(type="submit").btn.btn-primary Submit
+          hr
+          if open
+            h3.title #{symbol} Prediction - #{date}
+            ul.results
+              mixin list(title, val)
+                li
+                  h4.list-item #{title}: #{val}
+              +list("Open", open)
+              +list("High", high)
+              +list("Low", low)
+              +list("Volume", volume)
+              +list("Close (Actual)", close)
+              +list("Close (Predicted)", scoredlabels)
+  footer.footer
+    .container
+      span.text-muted &copy; James Earle 2017
