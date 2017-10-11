@@ -15,14 +15,13 @@ app.use(body.urlencoded({ extended : false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req: any, res: any) {
-    let student = new Student(123, "James Earle", "coding");
-    res.render('index', {
-        msg: Math.random() * 10
-    });
+    res.render('index');
 });
 
 app.post('/submit', function(req:any, res:any) {
-    let x = res;
+    res.render('index', {
+        color: req.body.color
+    });
 });
 
 // Express 4.X Middleware

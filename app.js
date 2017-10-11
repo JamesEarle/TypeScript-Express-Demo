@@ -4,8 +4,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var body = require("body-parser");
 var path = require("path");
-var models_1 = require("./models");
-// var path = require('path');
 var app = express();
 app.set('port', 443);
 app.set('views', './views');
@@ -14,13 +12,12 @@ app.use(body.json());
 app.use(body.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function (req, res) {
-    var student = new models_1.Student(123, "James Earle", "coding");
-    res.render('index', {
-        msg: Math.random() * 10
-    });
+    res.render('index');
 });
 app.post('/submit', function (req, res) {
-    var x = res;
+    res.render('index', {
+        color: req.body.color
+    });
 });
 // Express 4.X Middleware
 app.use(function (req, res, next) { });

@@ -4,7 +4,7 @@ html
     title My Web App
     link(rel='stylesheet', href='/css/style.css')
     link(rel='stylesheet', href='/css/bootstrap.min.css')
-    script(src="/js/bootstrap.min.js")
+    //- script(src="/js/bootstrap.min.js")
   body
     nav.navbar.navbar-dark.bg-dark.fixed-top
       .container
@@ -13,21 +13,25 @@ html
       .row
         .col-lg-12.text-center
           h2 Colored Boxes!
-          if msg
-            p #{msg}
+          if color 
+            p= color
           else 
-            p No message
+            p Nope.
           .fixed-box
             form(action="submit" method="POST")
               .centered-form-group
-                .form-group
-                  label(for="color") Select a Color: 
-                  select(name="color" id="color")
-                    option(value="lightgray") Default
-                    option(value="red") Red
-                    option(value="green") Green
-                    option(value="blue") Blue
-                  button(type="submit").btn.btn-primary Submit
+                .small-box
+                  .form-group
+                    label(for="color") Select a Color: 
+                    select(name="color" id="color")
+                      option(value="lightgray") Default
+                      option(value="red") Red
+                      option(value="green") Green
+                      option(value="blue") Blue
+                    button(type="submit").btn.btn-primary Submit
     footer.footer
       .container
         span.text-muted &copy; James Earle 2017
+script.
+  console.log("#{color}");
+  document.getElementsByClassName("fixed-box")[0].style.backgroundColor = "#{color}";
