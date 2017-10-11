@@ -1,10 +1,8 @@
 // app.ts
 import * as express from 'express';
+import * as body from 'body-parser';
+import * as path from 'path';
 import {Student} from './models';
-
-var path = require('path');
-// import * as node from 'node';
-// import * as path from 'path-parse';
 
 let app = express();
 
@@ -12,8 +10,8 @@ app.set('port', 443);
 app.set('views', './views');
 app.set('view engine', 'pug');
 
-// app.use('public');
-// app.use(express.static(__dirname + 'public'));
+app.use(body.json());
+app.use(body.urlencoded({ extended : false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req: any, res: any) {
