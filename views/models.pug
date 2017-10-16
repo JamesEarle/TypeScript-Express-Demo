@@ -14,22 +14,26 @@ html
     .container.top-margin
       .row
         .col-lg-12.text-center
-          h2 Colored Boxes!
-          .fixed-box#fixed-box
-            form(action="submit-color" method="POST")
+          h2 Using Models and OOP
+          .fixed-box#fixed-box.models
+            form(action="submit-model" method="POST")
               .centered-form-group
                 .small-box
                   .form-group
-                    label(for="color") Select a Color: 
-                    select(name="color" id="color")
-                      option(value="lightgray") Default
-                      option(value="red") Red
-                      option(value="green") Green
-                      option(value="blue") Blue
+                    label(for="animal") Select an Animal: 
+                    select(name="animal" id="animal")
+                      option(value="dog") Dog
+                      option(value="cat") Cat
                     button(type="submit").btn.btn-primary Submit
+      .row
+        .col-lg-12
+          if(url) 
+            ul
+              li #{name}
+              li #{age}
+              li Speak! "#{speak}"
     footer.footer
       .container
         span.text-muted &copy; James Earle 2017
 script.
-  console.log("#{color}");
-  document.getElementById("fixed-box").style.backgroundColor = "#{color}";
+  document.getElementById("fixed-box").style.backgroundImage = "url(#{url})";

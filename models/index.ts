@@ -1,21 +1,40 @@
-export interface Person {
-    pid: number;
+export interface Animal {
+    id: number;
+    age: number;
     name: string;
-    activity: string;
+    speak(): string;
 }
 
-export class Student implements Person {
-    public pid: number;
+export class Dog implements Animal {
+    public id: number;
+    public age: number;
     public name: string;
-    public activity: string;
+    public url: string = "/img/dog.jpg";
 
-    constructor(pid: number, name: string, activity: string) {
-        this.pid = pid;
+    constructor(id: number, name: string, age: number) {
+        this.id = id;
         this.name = name;
-        this.activity = activity;
+        this.age = age;
     }
 
-    public greet() {
-        return "Hi! I'm " + this.name + ". Lately I've been " + this.activity;
+    public speak() {
+        return "Woof!"
+    }
+}
+
+export class Cat implements Animal {
+    public id: number;
+    public age: number;
+    public name: string;
+    public url: string = "/img/cat.jpg";
+    
+    constructor(id: number, name: string, age: number) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+    public speak() {
+        return "Meow!";
     }
 }
