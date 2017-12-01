@@ -1,65 +1,65 @@
 // app.ts
 
-import * as express from 'express';
-import * as body from 'body-parser';
-import * as path from 'path';
+import * as body from "body-parser";
+import * as express from "express";
+import * as path from "path";
 
-import {Dog, Cat} from './models';
+import {Cat, Dog} from "./models";
 
-let app = express();
+const app: any = express();
 
-app.set('port', 443);
-app.set('views', './views');
-app.set('view engine', 'pug');
+app.set("port", 443);
+app.set("views", "./views");
+app.set("view engine", "pug");
 
 app.use(body.json());
 app.use(body.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
-app.get('/', function (req: any, res: any) {
-    res.render('index');
+app.get("/", (req: any, res: any): void => {
+    res.render("index");
 });
 
-app.get('/models', function (req: any, res: any) {
-    res.render('models');    
+app.get("/models", (req: any, res: any): void => {
+    res.render("models");
 });
 
-app.post('/submit-color', function (req: any, res: any) {
-    res.render('index', {
+app.post("/submit-color", (req: any, res: any): void => {
+    res.render("index", {
         color: req.body.color
     });
 });
 
-app.post('/submit-model', function(req: any, res: any) {
-    let type = req.body.animal;
+app.post("/submit-model", (req: any, res: any): void => {
+    const type: string = req.body.animal;
 
     if (type === "dog") {
-        let dog = new Dog(1, "Snoopy", 6);
-        res.render('models', {
-            name: dog.name,
+        const dog: Dog = new Dog(1, "Snoopy", 6);
+        res.render("models", {
             age: dog.age,
+            name: dog.name,
             speak: dog.speak(),
             url: dog.url
         });
     } else {
-        let cat = new Cat(2, "Grumpy", 10);
-        res.render('models', {
-            name: cat.name,
+        const cat: Cat = new Cat(2, "Grumpy", 10);
+        res.render("models", {
             age: cat.age,
+            name: cat.name,
             speak: cat.speak(),
             url: cat.url
         });
     }
 
-    res.render('models', {
+    res.render("models", {
         animal: type
     });
 });
 
-// Express 4.X Middleware
-app.use(function (req: any, res: any, next: any) { });
-app.use(function (err: any, req: any, res: any, next: any) { });
+// express 4.X Middleware
+app.use(function (req: any, res: any, next: any): void { });
+app.use(function (err: any, req: any, res: any, next: any): void { });
 
-app.listen(app.get('port'));
+app.listen(app.get("port"));
 
-console.log("Listening on port " + app.get('port') + "...");
+console.log("Listening on port " + app.get("port") + "...");

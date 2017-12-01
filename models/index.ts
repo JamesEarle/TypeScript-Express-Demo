@@ -2,6 +2,7 @@ export interface Animal {
     id: number;
     age: number;
     name: string;
+    url: string
     speak(): string;
 }
 
